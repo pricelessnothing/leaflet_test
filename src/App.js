@@ -5,6 +5,7 @@ import './App.css';
 function App() {
 
   let map;
+  let polyline = [];
 
   setTimeout(() => {
     map = L.map('map').setView([60.010115, 30.404316], 33);
@@ -44,8 +45,11 @@ function App() {
     L.circle(coords, {
       color,
       fillColor: color,
-      fillOpacity: .2
+      fillOpacity: .2,
+      radius: Math.floor(Math.random()*10) + 5
     }).addTo(map);
+    polyline.push(coords);
+    L.polyline(polyline).addTo(map);
   };
 
   return (
